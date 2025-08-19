@@ -127,3 +127,56 @@ end_time <- Sys.time()
 end_time - start_time
 ```
 
+```{r}
+urchin_counts <- tribble(
+  ~date, ~species, ~size_mm,
+  "10/3/2020", "purple", 55,
+  "10/4/2020", "red", 48,
+  "11/17/2020", "red", 67
+)
+
+urchin_counts_ymd <- urchin_counts %>% 
+  mutate(date = lubridate::mdy(date)) %>% 
+  mutate(year = year(date),
+         month = month(date),
+         day = day(date))
+
+urchin_counts_ymd
+```
+```{r}
+day_1 <- lubridate::ymd("2020-01-06")
+
+day_2 <- ymd("2020-05-18")
+
+day_3 <- ymd("2020-05-19")
+
+time_interval <- interval(day_1, day_2)
+time_length(time_interval, "week")
+```
+
+```{r}
+#str_detect returns T/F based on if the string is present or not
+my_string <- "Teddy loves eating salmon and socks"
+
+
+my_string %>% 
+  str_detect("love")
+```
+
+```{r}
+my_food <- c("burrito", "fish taco", "taco salad")
+
+my_food %>% 
+  str_detect("fish")
+```
+
+```{r}
+starwars %>% 
+  filter(str_detect(name, "Skywalker"))
+```
+
+```{r}
+firewalker <-  starwars %>% 
+  mutate(name = str_replace(name, pattern = "Sky", replacement = "Fire"))
+```
+

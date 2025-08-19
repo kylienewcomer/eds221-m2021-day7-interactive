@@ -86,3 +86,44 @@ animals %>%
   filter(!location %in% sites$location)
 
 ```
+```{r}
+my_date <- "03-15-1998"
+
+lubridate::mdy(my_date)
+
+```
+```{r}
+my_date <- "4/Dec/2001"
+
+lubridate::dmy(my_date)
+```
+
+```{r}
+my_date <- "19610518"
+
+lubridate::ymd(my_date)
+```
+
+```{r}
+lubridate::dmy("09/12/84")
+```
+##date that doesn't make sense
+```{r}
+time <- "2020-08-12 11:18"
+
+ymd_hm(time)
+
+with_tz(time, "America/Los Angeles")
+```
+```{r}
+week(time)
+
+```
+```{r}
+start_time <- Sys.time()
+
+end_time <- Sys.time()
+
+end_time - start_time
+```
+

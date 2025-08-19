@@ -57,17 +57,32 @@ sites <- data.frame(
 ```
 
 ```{r}
+#keeps all rows and adds all columns
 full_join_example <- full_join(animals, sites)
 ```
 
 ```{r}
+#keeps all left rows and adds matching columns from sites
 left_join_example <- left_join(animals, sites)
-right_join_example <- right_join(animals, sites)
-inner_join_example <- inner_join(animals, sites)
-semi_join_example <- semi_join(animals, sites)
-anti_join_example <- anti_join(animals, sites)
-```
 
-```{r}
+#keeps all right rows and adds matching columns from animals
+right_join_example <- right_join(animals, sites)
+
+#keeps only matching rows from left and adds matching columns from sites
+inner_join_example <- inner_join(animals, sites)
+
+#keeps only matching rows from left but does not add columns from sites
+semi_join_example <- semi_join(animals, sites)
+
+#same as
+animals %>% 
+  filter(location %in% sites$location)
+
+#keeps non matching rows from left and does not add columns from sites
+anti_join_example <- anti_join(animals, sites)
+
+#same as
+animals %>% 
+  filter(!location %in% sites$location)
 
 ```

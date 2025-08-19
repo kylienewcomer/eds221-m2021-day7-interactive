@@ -180,3 +180,22 @@ firewalker <-  starwars %>%
   mutate(name = str_replace(name, pattern = "Sky", replacement = "Fire"))
 ```
 
+```{r}
+#cleaning up white space
+
+feedback <- c(" I ate some  nachos", "Wednesday morning     ")
+#remove the leading, trailing, and duplicate spaces
+str_squish(feedback)
+
+#remove just the leading and trailing spaces
+str_trim(feedback)
+
+#convert cases
+str_to_lower(feedback)
+str_to_upper(feedback)
+
+#count number of matches in a string
+str_count(feedback, pattern = "nachos")
+```
+
+

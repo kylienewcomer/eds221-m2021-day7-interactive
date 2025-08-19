@@ -1,0 +1,44 @@
+---
+title: "day7-interactive"
+output: html_document
+date: "2025-08-19"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(palmerpenguins)
+library(lubridate)
+library(datapasta)
+```
+
+```{r}
+
+
+penguins_clean <- penguins %>% 
+  filter(island == "Biscoe" | island == "Dream") %>% 
+  select(1:6) %>% 
+  mutate(body_mass_kg = body_mass_g / 1000) %>% 
+  rename(location = "island")
+  
+  
+  
+```
+
+```{r}
+penguins_sum <- penguins %>% 
+  filter(species == "Adelie", !is.na(flipper_length_mm)) %>% 
+  group_by(sex) %>% 
+  summarise(mean_flipper_length_mm = mean(flipper_length_mm),
+            sd_flipper_length_mm = sd(flipper_length_mm),
+            sample_size = n())
+  
+  
+  
+```
+
+```{r}
+
+
+```
+
